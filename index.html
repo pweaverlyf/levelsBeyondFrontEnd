@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="App">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Levels Beyond Assessment</title>
+</head>
+
+<body ng-controller="mainController">
+  <!-- edit -->
+  <md-toolbar>
+    <h1>Levels Beyond Assessment</h1>
+  </md-toolbar>
+
+  <md-content class="md-padding" layout="column">
+    <h1 class="center">Github issues for the past 7 days</h1>
+    <div flex flex="50" layout="column" ng-repeat="d in data" class="padding-sides">
+      <md-card ng-if="compareDates(d.created_at)">
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-title">User: {{d.user.login}}</span>
+            <span class="md-subhead" ng-if="d.assignee">Assignee: {{d.assignee.login}}</span>
+            <span class="md-subhead" ng-if="!d.assignee">Assignee: No assignee for this issue</span>
+          </md-card-header-text>
+        </md-card-header>
+        <img ng-src="assets/reach_engine.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{d.title}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            {{d.body}}
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+  </md-content>
+</body>
+<script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="./node_modules/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="./node_modules/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="./node_modules/angular-material/angular-material.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+
+</html>
